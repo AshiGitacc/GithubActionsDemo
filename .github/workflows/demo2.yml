@@ -1,8 +1,29 @@
-name: hello-world
-on: push
+name: Learn GitHub Actions
+on:
+  push:
+    branches:
+      - feature/git-practice
 jobs:
-  my-job:
+  learning-job:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello Devloper!"
+      - name: Step 1 - Checkout Repository
+        uses: actions/checkout@v4
+      - name: Step 2 - Display Date
+        run: date
+      - name: Step 3 - Display Runner Information
+        run: |
+          echo "Operating System:"
+          uname -a
+      - name: Step 4 - List Repository Files
+        run: ls -la
+      - name: Step 5 - Print Environment Variable
+        run: echo "Repository Name = $GITHUB_REPOSITORY"
+      - name: Step 6 - Display Java Version
+        run: java -version
+      - name: Step 7 - Compile Java File
+        run: javac hello.java
+      - name: Step 8 - Show Generated Files
+        run: ls -la
+      - name: Step 9 - Success Message
+        run: echo "🎉 Workflow completed successfully!"
